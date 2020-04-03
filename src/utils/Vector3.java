@@ -18,7 +18,7 @@ public class Vector3 {
 
         Vector3 base = new Vector3(1,0,0);
 
-        Matrix3x3 rotY = Matrix3x3.rotationY(latAngle);
+        Matrix3x3 rotY = Matrix3x3.rotationY(-latAngle);
         Matrix3x3 rotZ = Matrix3x3.rotationZ(loAngle);
 
         base = rotY.mult(base);
@@ -36,7 +36,7 @@ public class Vector3 {
     public void mult(double times) {
         this.x *= times;
         this.y *= times;
-        this.y *= times;
+        this.z *= times;
     }
 
     public void rotate(double x, double y, double z) {

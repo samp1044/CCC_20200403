@@ -13,7 +13,7 @@ public class Level3 {
     public static final void main(String[] args) {
         Input.forEachFile("3", inputs -> {
             List<String> output = new ArrayList<>();
-            output.remove(0);
+            inputs.remove(0);
 
             for(String line : inputs) {
                 String[] splitted = line.split(",");
