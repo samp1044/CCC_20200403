@@ -15,6 +15,10 @@ public class Vector3 {
 
     }
 
+    public void rotate(double x, double y, double z) {
+
+    }
+
     public double getX() {
         return x;
     }
@@ -25,6 +29,18 @@ public class Vector3 {
 
     public double getZ() {
         return z;
+    }
+
+    public void setX(double x) {
+        this.x = x;
+    }
+
+    public void setY(double y) {
+        this.y = y;
+    }
+
+    public void setZ(double z) {
+        this.z = z;
     }
 
     public String toLevel3Out() {

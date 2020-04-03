@@ -3,6 +3,7 @@ package main;
 import io.Input;
 import level2.Direction;
 import level2.Flight;
+import utils.Vector3;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -20,7 +21,7 @@ public class Level3 {
                 String longitude = splitted[1];
                 String altitude = splitted[2];
 
-
+                output.add(new Vector3(lat, longitude, altitude).toLevel3Out());
             }
 
             return output;
