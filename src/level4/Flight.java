@@ -12,7 +12,7 @@ public class Flight {
     private String end;
     private int takeoff;
 
-    private Map<Integer, Vector3> positions;
+    private Map<Integer, String> positions;
 
     public Flight(int id, String start, String end, int takeoff) {
         this.id = id;
@@ -23,5 +23,19 @@ public class Flight {
         this.positions = new HashMap<>();
     }
 
+    public Flight(int id, String start, String end, int takeoff, Map<Integer,String> positions) {
+        this.id = id;
+        this.start = start;
+        this.end = end;
+        this.takeoff = takeoff;
+
+        this.positions = positions;
+    }
+
+	@Override
+	public String toString() {
+		return "Flight [id=" + id + ", start=" + start + ", end=" + end + ", takeoff=" + takeoff + ", positions="
+				+ positions + "]";
+	}
 
 }
