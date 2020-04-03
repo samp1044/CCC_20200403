@@ -17,6 +17,7 @@ public class Input {
         File dir = new File("input/" + level);
 
         for(File f : dir.listFiles()) {
+            System.out.println("File " + f.getName());
             List<String> output = processor.process(readFile(f));
             writeOutput(level, f, output);
         }
@@ -47,9 +48,10 @@ public class Input {
     	Map<Integer,Flight> flights = new HashMap<>();
     	
     	
-    	File dir = new File("input\\flights");
+    	File dir = new File("input/flights");
 
-        for(File f : dir.listFiles()) {  
+        for(File f : dir.listFiles()) {
+
             try (
                     FileReader fr = new FileReader(f);
                     BufferedReader nr = new BufferedReader(fr);
@@ -57,30 +59,30 @@ public class Input {
             {
             	String start;
             	String end;
-            	String takeof;
+            	int takeof;
             	String n;
             	String[] pos;
             	String id = f.getName().substring(0, f.getName().indexOf('.'));
             	Map<Integer,String> m;
                 while((start = nr.readLine()) != null) {
                 	end= nr.readLine();
-                	takeof = nr.readLine();
+                	takeof = Integer.parseInt(nr.readLine());
                 	n = nr.readLine();
                 	int ni = Integer.parseInt(n);
                 	m = new HashMap<>();
                 	for(int i = 0; i < ni; i++) {
                 		pos = nr.readLine().split(",");
-                		m.put(Integer.parseInt(pos[0]),pos[1]+","+pos[2]+","+pos[3]);
+                		m.put(takeof + Integer.parseInt(pos[0]),pos[1]+","+pos[2]+","+pos[3]);
                 	}
                 	//int id, String start, String end, int takeoff
-                	flights.put(Integer.parseInt(id),new Flight(Integer.parseInt(id),start,end,Integer.parseInt(takeof),m));
+                	flights.put(Integer.parseInt(id),new Flight(Integer.parseInt(id),start,end,takeof,m));
                 }
             } catch (Exception e) {
                 e.printStackTrace();
             }
 
         }
-        
+
         return flights;
     }
 

@@ -55,16 +55,21 @@ public class Flight {
             loMin = Double.parseDouble(splitted[1]);
             altMin = Double.parseDouble(splitted[2]);
 
-            splitted = this.positions.get(lower).split(",");
+            splitted = this.positions.get(higher).split(",");
             latMax = Double.parseDouble(splitted[0]);
             loMax = Double.parseDouble(splitted[1]);
             altMax = Double.parseDouble(splitted[2]);
 
-            la = (latMin + latMax) / 2;
-            lo = (loMin + loMax) / 2;
-            alt = (altMin + altMax) / 2;
+            double offset = higher - lower;
+            double laUnit = (latMax - latMin) / offset;
+            double loUnit = (loMax - loMin) / offset;
+            double altUnit = (altMax - altMin) / offset;
 
-            return la + " " + lo + " " + alt;
+            latMin += (laUnit * timestamp);
+            loMin += (loUnit * timestamp);
+            altMin += (altUnit * timestamp);
+
+            return latMin + " " + loMin + " " + altMin;
         }
     }
 }

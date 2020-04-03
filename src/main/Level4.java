@@ -19,12 +19,18 @@ public class Level4 {
             inputs.remove(0);
 
             for(String line : inputs) {
-                String[] splitted = line.split(",");
+                String[] splitted = line.split(" ");
                 int flightId = Integer.parseInt(splitted[0]);
                 int timestamp = Integer.parseInt(splitted[1]);
                 Flight flight = flights.get(flightId);
 
-                output.add(flight.interpolate(timestamp));
+                try {
+                    output.add(flight.interpolate(timestamp));
+                } catch(Exception e) {
+                    System.out.println("[Error]");
+                    System.out.println("flightId: " + flightId + "; timestamp: " + timestamp);
+
+                }
             }
 
             return output;
