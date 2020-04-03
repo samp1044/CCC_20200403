@@ -17,7 +17,7 @@ public class Direction implements Comparable<Direction> {
     }
 
     public boolean addFlight(Flight flight) {
-        if(flight.getFrom() == this.from && flight.getTo() == this.to) {
+        if(flight.getFrom().equals(this.from) && flight.getTo().equals(this.to)) {
             if(!this.flights.contains(flight)) {
                 flights.add(flight);
             }
@@ -48,10 +48,5 @@ public class Direction implements Comparable<Direction> {
         Direction direction = (Direction) o;
         return Objects.equals(from, direction.from) &&
                 Objects.equals(to, direction.to);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(from, to);
     }
 }

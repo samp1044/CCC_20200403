@@ -24,11 +24,6 @@ public class Flight {
                 Objects.equals(to, flight.to);
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(from, to, takeoff);
-    }
-
     public String getFrom() {
         return from;
     }
