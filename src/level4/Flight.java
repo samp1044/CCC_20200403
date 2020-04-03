@@ -38,4 +38,33 @@ public class Flight {
 				+ positions + "]";
 	}
 
+    public String interpolate(int timestamp) {
+        if (this.positions.containsKey(timestamp)) {
+            return this.positions.get(timestamp);
+        } else {
+            int lower = timestamp, higher = timestamp;
+            double latMin, latMax, loMin, loMax, altMin, altMax;
+            double la, lo, alt;
+            String[] splitted;
+
+            for(;lower >= takeoff && this.positions.containsKey(lower) == false; lower--);
+            for(;this.positions.containsKey(higher) == false; higher++);
+
+            splitted = this.positions.get(lower).split(",");
+            latMin = Double.parseDouble(splitted[0]);
+            loMin = Double.parseDouble(splitted[1]);
+            altMin = Double.parseDouble(splitted[2]);
+
+            splitted = this.positions.get(lower).split(",");
+            latMax = Double.parseDouble(splitted[0]);
+            loMax = Double.parseDouble(splitted[1]);
+            altMax = Double.parseDouble(splitted[2]);
+
+            la = (latMin + latMax) / 2;
+            lo = (loMin + loMax) / 2;
+            alt = (altMin + altMax) / 2;
+
+            return la + " " + lo + " " + alt;
+        }
+    }
 }

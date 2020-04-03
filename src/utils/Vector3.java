@@ -39,6 +39,19 @@ public class Vector3 {
         this.z *= times;
     }
 
+    public double length() {
+        return Math.sqrt(this.x * this.x + this.y * this.y + this.z * this.z);
+    }
+
+    public Vector3 clone() {
+        return new Vector3(this.x, this.y, this.z);
+    }
+
+    public void unit() {
+        double length = this.length();
+        this.mult(1 / length);
+    }
+
     public void rotate(double x, double y, double z) {
 
     }
